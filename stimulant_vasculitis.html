@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stimulant Vasculitis / Vasculopathy — Clinical Education Reference</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Nunito:wght@600;700;800&display=swap');
+
+:root {
+  --primary: #1A73E8;
+  --dark-navy: #1B3A6B;
+  --bg: #F1F3F4;
+  --card-bg: #FFFFFF;
+  --green: #34A853;
+  --red: #EA4335;
+  --yellow: #FBBC04;
+  --purple: #9334E6;
+  --text-primary: #202124;
+  --text-secondary: #5F6368;
+  --divider: #DADCE0;
+  --shadow: 0 2px 8px rgba(0,0,0,0.10);
+  --radius: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4 { font-family: 'Nunito', 'Segoe UI', sans-serif; }
+
+/* Progress bar */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--primary);
+  z-index: 10001;
+  transition: width 0.15s ease;
+  width: 0%;
+}
+
+/* Sticky Nav */
+#top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  background: var(--dark-navy);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 56px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+#top-nav .brand {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  white-space: nowrap;
+  margin-right: 32px;
+  cursor: pointer;
+}
+
+#top-nav .nav-links {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  flex: 1;
+  scrollbar-width: none;
+}
+#top-nav .nav-links::-webkit-scrollbar { display: none; }
+
+#top-nav .nav-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+#top-nav .nav-links a:hover,
+#top-nav .nav-links a.active {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+#top-nav .nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 16px;
+}
+
+#top-nav .nav-actions button {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+#top-nav .nav-actions button:hover { background: rgba(255,255,255,0.25); }
+
+#hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* Mobile nav */
+#mobile-nav {
+  display: none;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  background: var(--dark-navy);
+  z-index: 9999;
+  flex-direction: column;
+  padding: 8px 16px 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+#mobile-nav.open { display: flex; }
+#mobile-nav a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+#mobile-nav a:hover { background: rgba(255,255,255,0.12); }
+
+/* Hero */
+#hero {
+  background: linear-gradient(135deg, var(--dark-navy) 0%, #2A5298 100%);
+  color: #fff;
+  padding: 48px 24px 32px;
+  text-align: center;
+}
+#hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+#hero p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+
+/* Tab navigation */
+#tab-bar {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--divider);
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  top: 56px;
+  z-index: 9998;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+#tab-bar::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  font-family: 'Roboto', sans-serif;
+}
+.tab-btn:hover { color: var(--primary); }
+.tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  font-weight: 700;
+}
+
+/* Content area */
+.content-area {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+.tab-panel {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.tab-panel.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--dark-navy);
+}
+
+.card-subtitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+/* Colored cards */
+.card-blue { border-left: 5px solid var(--primary); }
+.card-red { border-left: 5px solid var(--red); background: #FFF5F5; }
+.card-yellow { border-left: 5px solid var(--yellow); background: #FFFDF0; }
+.card-green { border-left: 5px solid var(--green); background: #F0FFF4; }
+.card-purple { border-left: 5px solid var(--purple); }
+
+/* Three-column pattern cards */
+.pattern-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+.pattern-card {
+  border-radius: var(--radius);
+  padding: 20px;
+  color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.pattern-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+.pattern-card h4 { font-size: 1rem; margin-bottom: 10px; }
+.pattern-card p { font-size: 0.9rem; opacity: 0.95; line-height: 1.5; }
+.pattern-card.bg-blue { background: linear-gradient(135deg, var(--primary), #4285F4); }
+.pattern-card.bg-purple { background: linear-gradient(135deg, var(--purple), #B06AE8); }
+.pattern-card.bg-red { background: linear-gradient(135deg, var(--red), #F06449); }
+
+/* Tables */
+.styled-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin: 20px 0;
+  font-size: 0.9rem;
+}
+.styled-table thead th {
+  background: var(--dark-navy);
+  color: #fff;
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+}
+.styled-table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--divider);
+  background: var(--card-bg);
+}
+.styled-table tbody tr:last-child td { border-bottom: none; }
+.styled-table tbody tr:hover td { background: #F1F5FE; }
+.styled-table tbody tr.highlight-cocaine td { background: #E8F0FE; }
+.styled-table tbody tr.highlight-meth td { background: #F3E8FD; }
+
+/* Accordion */
+.accordion { margin: 16px 0; }
+.accordion-item {
+  border: 1px solid var(--divider);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  background: var(--card-bg);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.2s;
+  user-select: none;
+}
+.accordion-header:hover { background: #F1F5FE; }
+.accordion-arrow {
+  transition: transform 0.3s;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+.accordion-item.open .accordion-arrow { transform: rotate(180deg); }
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  padding: 0 20px;
+}
+.accordion-item.open .accordion-body {
+  max-height: 2000px;
+  padding: 0 20px 20px;
+}
+
+/* Filter buttons */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 2px solid var(--primary);
+  background: var(--card-bg);
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s, color 0.2s;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Two-column layout */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* Pearl cards */
+.pearl-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.pearl-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+.pearl-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: #F1F5FE;
+}
+.pearl-content { flex: 1; }
+.pearl-content h4 { font-size: 1.1rem; margin-bottom: 8px; color: var(--dark-navy); }
+.pearl-content p { color: var(--text-secondary); line-height: 1.6; }
+
+/* Step flow */
+.step {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.step-content { flex: 1; }
+.step-content h4 { margin-bottom: 8px; color: var(--dark-navy); }
+
+/* Disposition panels */
+.admit-card {
+  background: #FFF5F5;
+  border: 2px solid var(--red);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.admit-card h4 { color: var(--red); margin-bottom: 12px; }
+.discharge-card {
+  background: #F0FFF4;
+  border: 2px solid var(--green);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.discharge-card h4 { color: var(--green); margin-bottom: 12px; }
+
+/* Case cards */
+.case-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.case-header {
+  background: linear-gradient(135deg, var(--dark-navy), #2A5298);
+  color: #fff;
+  padding: 20px 24px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.case-body { padding: 24px; }
+.case-section { margin-bottom: 16px; }
+.case-section h5 {
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Warning box */
+.warning-box {
+  background: #FFFDF0;
+  border-left: 5px solid var(--yellow);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.95rem;
+}
+
+/* Info box */
+.info-box {
+  background: #E8F0FE;
+  border-left: 5px solid var(--primary);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.95rem;
+}
+
+/* Danger box */
+.danger-box {
+  background: #FFF5F5;
+  border-left: 5px solid var(--red);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.95rem;
+}
+
+/* Lists */
+ul.content-list, ol.content-list {
+  margin: 10px 0 10px 20px;
+  line-height: 1.8;
+}
+ul.content-list li, ol.content-list li { margin-bottom: 4px; }
+
+/* Reference list */
+.ref-list { list-style: decimal; margin-left: 24px; }
+.ref-list li { padding: 8px 0; border-bottom: 1px solid var(--divider); line-height: 1.5; }
+.ref-list li:last-child { border-bottom: none; }
+
+/* Back to top */
+#back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(26,115,232,0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, opacity 0.2s;
+  z-index: 9000;
+}
+#back-to-top:hover { transform: scale(1.1); }
+#back-to-top.visible { display: flex; }
+
+/* Footer */
+footer {
+  background: var(--dark-navy);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 24px;
+  font-size: 0.85rem;
+}
+footer a { color: rgba(255,255,255,0.9); }
+
+/* Mechanism flow diagram */
+.flow-diagram {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 16px 0;
+  text-align: center;
+  font-size: 0.85rem;
+}
+.flow-box {
+  background: #E8F0FE;
+  border-radius: 8px;
+  padding: 10px 8px;
+  font-weight: 500;
+}
+.flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pattern-grid { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .flow-diagram { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  #top-nav .nav-links { display: none; }
+  #top-nav .nav-actions .print-btn-text { display: none; }
+  #hamburger { display: block; }
+  #hero h1 { font-size: 1.6rem; }
+  #hero p { font-size: 0.95rem; }
+  .tab-btn { padding: 12px 14px; font-size: 13px; }
+  .card { padding: 20px; }
+  .pearl-card { flex-direction: column; }
+  .pearl-icon { width: 48px; height: 48px; font-size: 2rem; }
+  .styled-table { font-size: 0.8rem; }
+  .styled-table thead th, .styled-table tbody td { padding: 8px 10px; }
+  .flow-diagram { grid-template-columns: 1fr 1fr; }
+}
+
+/* Print styles */
+@media print {
+  #progress-bar, #top-nav, #tab-bar, #back-to-top, #hamburger, #mobile-nav { display: none !important; }
+  .tab-panel { display: block !important; opacity: 1 !important; }
+  .tab-panel::before {
+    content: attr(data-title);
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--dark-navy);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    margin-top: 32px;
+  }
+  .accordion-body { max-height: none !important; padding: 0 20px 20px !important; }
+  .card:hover { transform: none; box-shadow: var(--shadow); }
+  body { background: #fff; }
+  .content-area { padding: 0 16px; }
+  #hero { padding: 24px; }
+  .card { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav id="top-nav">
+  <button id="hamburger" aria-label="Menu">&#9776;</button>
+  <div class="brand" onclick="activateTab(0);window.scrollTo({top:0,behavior:'smooth'})">&#129516; Stimulant Vasculitis</div>
+  <div class="nav-links" id="nav-links">
+    <a href="#" data-tab="0">Overview</a>
+    <a href="#" data-tab="1">Background</a>
+    <a href="#" data-tab="2">Mechanisms</a>
+    <a href="#" data-tab="3">Presentation</a>
+    <a href="#" data-tab="4">Diagnosis</a>
+    <a href="#" data-tab="5">Management</a>
+    <a href="#" data-tab="6">Disposition</a>
+    <a href="#" data-tab="7">Cases</a>
+    <a href="#" data-tab="8">Pearls</a>
+    <a href="#" data-tab="9">References</a>
+  </div>
+  <div class="nav-actions">
+    <button onclick="window.print()">&#128424;<span class="print-btn-text"> Print</span></button>
+  </div>
+</nav>
+
+<div id="mobile-nav">
+  <a href="#" data-tab="0">Overview</a>
+  <a href="#" data-tab="1">Background</a>
+  <a href="#" data-tab="2">Mechanisms</a>
+  <a href="#" data-tab="3">Presentation</a>
+  <a href="#" data-tab="4">Diagnosis</a>
+  <a href="#" data-tab="5">Management</a>
+  <a href="#" data-tab="6">Disposition</a>
+  <a href="#" data-tab="7">Cases</a>
+  <a href="#" data-tab="8">Pearls</a>
+  <a href="#" data-tab="9">References</a>
+</div>
+
+<section id="hero">
+  <h1>Stimulant Vasculitis / Vasculopathy</h1>
+  <p>An interactive clinical education reference for emergency medicine and toxicology — from mechanism to management.</p>
+</section>
+
+<div id="tab-bar">
+  <button class="tab-btn active" data-tab="0">Overview</button>
+  <button class="tab-btn" data-tab="1">Background</button>
+  <button class="tab-btn" data-tab="2">Mechanisms</button>
+  <button class="tab-btn" data-tab="3">Clinical Presentation</button>
+  <button class="tab-btn" data-tab="4">Diagnosis</button>
+  <button class="tab-btn" data-tab="5">Management</button>
+  <button class="tab-btn" data-tab="6">Disposition</button>
+  <button class="tab-btn" data-tab="7">Case Studies</button>
+  <button class="tab-btn" data-tab="8">Key Pearls</button>
+  <button class="tab-btn" data-tab="9">References</button>
+</div>
+
+<main class="content-area">
+
+<!-- TAB 0: OVERVIEW -->
+<div class="tab-panel active" id="tab-0" data-title="Overview">
+  <div class="card">
+    <h2 class="card-title">What Is Stimulant Vasculitis / Vasculopathy?</h2>
+    <p>"Stimulant vasculitis" is a broad clinical term encompassing several overlapping mechanisms of vascular injury caused by stimulant drugs. It is not a single disease &mdash; rather, it is a spectrum of conditions that present along a continuum from pure vasospasm to frank inflammatory vasculitis. Understanding the range of injury patterns is essential for accurate diagnosis and appropriate management in the emergency department.</p>
+
+    <h3 class="card-subtitle">Three Core Injury Patterns</h3>
+
+    <div class="pattern-grid">
+      <div class="pattern-card bg-blue">
+        <h4>1. Immune-Mediated Small-Vessel Vasculitis</h4>
+        <p>Classic leukocytoclastic vasculitis, most strongly associated with levamisole-adulterated cocaine. Characterized by painful purpura, retiform skin lesions, and positive ANCA serology with neutropenia. Inflammatory infiltrates damage small vessel walls.</p>
+      </div>
+      <div class="pattern-card bg-purple">
+        <h4>2. Thrombotic Vasculopathy / Ischemic Necrosis</h4>
+        <p>Microvascular thrombosis causing tissue ischemia and skin necrosis. Often coexists with the inflammatory picture and may predominate on biopsy. Results from platelet activation and endothelial dysfunction rather than immune-mediated vessel wall destruction.</p>
+      </div>
+      <div class="pattern-card bg-red">
+        <h4>3. Catecholamine-Mediated Direct Vascular Injury</h4>
+        <p>Sympathomimetic surge from cocaine and methamphetamine causes vasospasm, severe hypertension, endothelial injury, and platelet activation. This can produce ischemic injury without classic inflammatory infiltrates on biopsy.</p>
+      </div>
+    </div>
+
+    <h3 class="card-subtitle">Key Clinical Problem</h3>
+    <p>Patients typically present with painful purpura, retiform (net-like) skin lesions, and tissue necrosis &mdash; with or without systemic organ involvement affecting the kidneys, lungs, or nervous system. The challenge lies in distinguishing between the different injury patterns and, critically, excluding dangerous mimics such as necrotizing soft tissue infection or endocarditis.</p>
+  </div>
+
+  <div class="warning-box">
+    <strong>&#9888;&#65039; High-Yield Association:</strong> Cocaine + Levamisole Adulteration &rarr; ANCA-positive vasculitis/vasculopathy + neutropenia. This is the most well-characterized stimulant vasculitis syndrome and should be the first pattern recognized in the ED. Levamisole has been found in over 70% of North American street cocaine at various points.
+  </div>
+</div>
+
+<!-- TAB 1: BACKGROUND -->
+<div class="tab-panel" id="tab-1" data-title="Background">
+  <div class="card">
+    <h2 class="card-title">Why It Matters &mdash; ED Perspective</h2>
+
+    <h3 class="card-subtitle">Common ED Presentation</h3>
+    <p>Stimulant vasculitis frequently arrives as painful purpura, retiform (net-like) skin lesions, or frank skin necrosis, often with a note from an outside facility that simply says "vasculitis." The emergency physician must rapidly distinguish between drug-related causes and the dangerous mimics that require immediate intervention. A systematic approach to the differential diagnosis is critical for patient safety.</p>
+  </div>
+
+  <div class="card card-red">
+    <h3 class="card-subtitle" style="color:var(--red);margin-top:0">&#128680; High-Risk Misses</h3>
+    <p>The following conditions must be actively excluded before attributing findings to stimulant vasculopathy:</p>
+    <ul class="content-list">
+      <li><strong>Infection and septic emboli</strong> &mdash; endocarditis, especially in IV drug users with fever and a new murmur</li>
+      <li><strong>Purpura fulminans and DIC</strong> &mdash; rapidly progressive purpura with hemodynamic instability and coagulopathy</li>
+      <li><strong>Necrotizing soft tissue infection (NSTI)</strong> &mdash; the most dangerous miss; pain out of proportion, crepitus, systemic toxicity</li>
+      <li><strong>TTP / HUS</strong> &mdash; thrombocytopenia + renal failure + neurologic symptoms + microangiopathic hemolysis</li>
+      <li><strong>Calciphylaxis</strong> &mdash; in patients with renal disease, painful skin calcifications with livedo pattern</li>
+      <li><strong>Meningococcemia</strong> &mdash; rapidly progressive petechial/purpuric rash with sepsis</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 class="card-subtitle">Who Is Affected</h3>
+    <ul class="content-list">
+      <li>Most cases occur in adult cocaine and methamphetamine users, typically ages 20&ndash;50</li>
+      <li>Levamisole contamination of the cocaine supply has been estimated at over 70% in North American street cocaine at various points, making this an underrecognized but common exposure</li>
+      <li>Prescription stimulant vasculopathy (ADHD medications such as methylphenidate and dextroamphetamine) is less common but has been reported in the pediatric and young adult population</li>
+    </ul>
+
+    <h3 class="card-subtitle">Why Levamisole Matters</h3>
+    <p>Levamisole is an antihelminthic agent used in veterinary medicine that is added to cocaine as a cutting agent, likely because it enhances cocaine's euphoric effects through modulation of monoamine pathways. It causes immune dysregulation that persists well beyond cocaine's short half-life. Its immunologic effects &mdash; including ANCA positivity and agranulocytosis &mdash; can last for weeks with continued re-exposure. Levamisole is not detected on standard urine drug screens, making clinical suspicion the primary diagnostic tool.</p>
+  </div>
+</div>
+
+<!-- TAB 2: MECHANISMS -->
+<div class="tab-panel" id="tab-2" data-title="Mechanisms">
+  <div class="card">
+    <h2 class="card-title">Mechanisms of Toxicity</h2>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all" onclick="filterMech('all',this)">All</button>
+      <button class="filter-btn" data-filter="cocaine" onclick="filterMech('cocaine',this)">Cocaine</button>
+      <button class="filter-btn" data-filter="meth" onclick="filterMech('meth',this)">Methamphetamine</button>
+    </div>
+
+    <div class="mech-section" data-drug="cocaine">
+      <h3 class="card-subtitle">Cocaine</h3>
+      <ul class="content-list">
+        <li>Cocaine has a short half-life (minutes to hours), but its effects can be prolonged through active metabolites such as cocaethylene (when combined with ethanol) and norcocaine</li>
+        <li><strong>Sympathomimetic surge:</strong> Massive catecholamine release produces intense vasoconstriction, endothelial injury, and platelet activation throughout the microvasculature</li>
+        <li><strong>Direct platelet aggregation:</strong> Cocaine promotes thrombosis in the microvasculature independent of the catecholamine surge, increasing the risk of ischemic tissue injury</li>
+        <li><strong>Levamisole (adulterant):</strong> Causes immune dysregulation through T-cell abnormalities and complement activation, leading to ANCA production, neutropenia, and agranulocytosis</li>
+        <li>The combination produces a mixed picture with both <strong>thrombotic AND inflammatory</strong> injury patterns frequently coexisting on biopsy</li>
+      </ul>
+    </div>
+
+    <div class="mech-section" data-drug="meth">
+      <h3 class="card-subtitle">Methamphetamine / Amphetamines</h3>
+      <ul class="content-list">
+        <li><strong>Sustained catecholamine release:</strong> Intense and prolonged release of norepinephrine and dopamine produces prolonged vasoconstriction, severe hypertension, and progressive endothelial injury</li>
+        <li><strong>Direct endothelial toxicity:</strong> Methamphetamine has direct toxic effects on vascular endothelium, independent of its hemodynamic effects</li>
+        <li>Reported necrotizing vasculitis and polyarteritis nodosa (PAN)-like pictures have been described, though these are rare and often require exclusion of other etiologies before attribution</li>
+        <li><strong>CNS vasculopathy/angiopathy:</strong> Syndromes involving cerebral vasospasm and hemorrhage have been reported; the mechanism likely involves both direct endothelial toxicity and hemodynamic injury from severe hypertension</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="card-subtitle">Mechanism Summary</h3>
+    <table class="styled-table" id="mech-table">
+      <thead>
+        <tr>
+          <th>Drug</th>
+          <th>Primary Mechanism</th>
+          <th>Vascular Injury Type</th>
+          <th>Key Lab Finding</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight-cocaine" data-drug="cocaine">
+          <td><strong>Cocaine (alone)</strong></td>
+          <td>Catecholamine surge, platelet activation, endothelial injury</td>
+          <td>Vasospasm &rarr; ischemia</td>
+          <td>Usually normal</td>
+        </tr>
+        <tr class="highlight-cocaine" data-drug="cocaine">
+          <td><strong>Cocaine + Levamisole</strong></td>
+          <td>Immune dysregulation, ANCA induction, complement activation</td>
+          <td>Leukocytoclastic vasculitis + thrombotic vasculopathy</td>
+          <td>ANCA+, Neutropenia</td>
+        </tr>
+        <tr class="highlight-meth" data-drug="meth">
+          <td><strong>Methamphetamine</strong></td>
+          <td>Sustained catecholamine toxicity, direct endothelial injury</td>
+          <td>Vasospasm, ischemia, rarely necrotizing vasculitis</td>
+          <td>HTN, CK elevation</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 3: CLINICAL PRESENTATION -->
+<div class="tab-panel" id="tab-3" data-title="Clinical Presentation">
+  <div class="card">
+    <h2 class="card-title">Clinical Presentation</h2>
+
+    <div class="accordion">
+      <div class="accordion-item open">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>&#128204; Cutaneous Findings (Most Common)</span>
+          <span class="accordion-arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <ul class="content-list">
+            <li><strong>Retiform purpura:</strong> Net-like, branching purpuric lesions that strongly suggest microvascular occlusion or vasculitis rather than simple thrombocytopenia. This pattern reflects the branching architecture of dermal vessels undergoing occlusion or inflammation.</li>
+            <li><strong>Violaceous plaques:</strong> Deep purple-red raised lesions that may progress to bullae formation. These represent areas of deeper vascular compromise with dermal edema and hemorrhage.</li>
+            <li><strong>Bullae and necrosis:</strong> Fluid-filled blisters overlying ischemic skin, progressing to black eschar if tissue perfusion is not restored. These lesions indicate full-thickness ischemic injury.</li>
+            <li><strong>Tender lesions:</strong> Pain out of proportion to the visual appearance of the lesion is a key feature that distinguishes vasculitis/vasculopathy from non-tender purpura seen in thrombocytopenic states.</li>
+          </ul>
+          <h4 style="margin-top:16px;color:var(--dark-navy)">Distribution Clues</h4>
+          <ul class="content-list">
+            <li><strong>Levamisole-cocaine pattern:</strong> Ears (especially the helices), nose, cheeks, and distal extremities. This distribution is highly characteristic and should immediately raise suspicion.</li>
+            <li>Extremities in general, lower > upper extremity involvement</li>
+            <li>Lesions are often multifocal and bilateral</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>&#127973; Systemic Involvement</span>
+          <span class="accordion-arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <ul class="content-list">
+            <li><strong>ENT:</strong> Midline destructive lesions of the nose, septum, and palate in chronic intranasal cocaine users. These lesions can mimic granulomatosis with polyangiitis (GPA/Wegener's), but the ANCA pattern and tissue findings typically differ on careful analysis.</li>
+            <li><strong>Renal:</strong> Hematuria, proteinuria, and acute kidney injury may represent immune complex glomerulonephritis or ischemic nephropathy. Urinalysis with microscopy is essential for early detection.</li>
+            <li><strong>Pulmonary:</strong> Hemoptysis, dyspnea, and diffuse alveolar hemorrhage are uncommon but serious manifestations that may warrant urgent bronchoscopy for confirmation and source localization.</li>
+            <li><strong>Neurologic:</strong> Headache, focal deficits, and stroke may represent vasospasm, hypertensive crisis, or rarely true CNS vasculitis. Neuroimaging is required for any focal neurologic findings.</li>
+            <li><strong>Musculoskeletal:</strong> Arthralgias, arthritis, and myalgias are common systemic inflammatory accompaniments that may precede or accompany cutaneous findings.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>&#128680; Red Flags &mdash; Dangerous Mimics</span>
+          <span class="accordion-arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <div class="danger-box">
+            <p><strong>The following features should immediately raise concern for a dangerous mimic rather than stimulant vasculitis:</strong></p>
+            <ul class="content-list">
+              <li><strong>IV drug use + murmur + fever + purpura</strong> &rarr; <strong style="color:var(--red)">Endocarditis with septic emboli</strong> &mdash; obtain blood cultures and echocardiography urgently</li>
+              <li><strong>Rapidly spreading purpura + hemodynamic instability</strong> &rarr; <strong style="color:var(--red)">Purpura fulminans / DIC / meningococcemia</strong> &mdash; aggressive resuscitation and empiric antibiotics</li>
+              <li><strong>Skin changes + crepitus + pain out of proportion + fever</strong> &rarr; <strong style="color:var(--red)">NSTI (surgical emergency)</strong> &mdash; immediate surgical consultation; imaging does not rule out NSTI</li>
+              <li><strong>New neurologic symptoms + purpura + thrombocytopenia + renal failure</strong> &rarr; <strong style="color:var(--red)">TTP</strong> &mdash; emergent plasma exchange evaluation</li>
+              <li><strong>Renal disease history + painful skin calcifications + livedo</strong> &rarr; <strong style="color:var(--red)">Calciphylaxis</strong> &mdash; wound care, sodium thiosulfate, nephrology consultation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 4: DIAGNOSIS -->
+<div class="tab-panel" id="tab-4" data-title="Diagnosis">
+  <div class="card">
+    <h2 class="card-title">Workup and Diagnosis</h2>
+  </div>
+
+  <div class="two-col">
+    <div class="card card-blue">
+      <h3 class="card-subtitle" style="margin-top:0">History (High-Yield Points)</h3>
+      <ul class="content-list">
+        <li><strong>Exact substance:</strong> cocaine vs. methamphetamine vs. prescription amphetamines. Determine route (intranasal, IV, smoked), frequency, last use, and total duration of use.</li>
+        <li><strong>New supply:</strong> Ask specifically about a new supply, dealer, or batch &mdash; levamisole content varies by source and batch, and a change in supplier may correlate with symptom onset.</li>
+        <li><strong>Constitutional symptoms:</strong> Fever, weight loss, and fatigue suggest a systemic inflammatory or infectious process that extends beyond cutaneous disease.</li>
+        <li><strong>Prior episodes:</strong> Recurrence with re-exposure is a hallmark of levamisole-cocaine vasculopathy and strongly supports the diagnosis.</li>
+        <li><strong>IV drug use history:</strong> Skin and soft tissue infections, prior hospitalizations, and endocarditis risk factors must be specifically elicited.</li>
+        <li><strong>Autoimmune history:</strong> Oral ulcers, chronic sinus disease, hematuria, Raynaud phenomenon &mdash; to help exclude primary autoimmune vasculitis.</li>
+        <li><strong>Prescription stimulants:</strong> ADHD medications (methylphenidate, dextroamphetamine) in children and adults.</li>
+      </ul>
+
+      <h3 class="card-subtitle">Physical Exam</h3>
+      <ul class="content-list">
+        <li>Fully characterize and document/photograph all skin lesions: location, size, borders, color, presence of bullae or necrosis, and tenderness</li>
+        <li><strong>Ears specifically</strong> &mdash; the levamisole pattern characteristically involves the helices of the ears</li>
+        <li>Distal perfusion, pulses, and capillary refill</li>
+        <li>Full neurologic examination</li>
+        <li>Cardiac exam &mdash; murmurs raise concern for endocarditis</li>
+        <li>ENT: nasal septum integrity, palate examination</li>
+      </ul>
+    </div>
+
+    <div class="card card-purple">
+      <h3 class="card-subtitle" style="margin-top:0">Core Lab Tests</h3>
+      <ul class="content-list">
+        <li><strong>CBC with differential</strong> &mdash; neutropenia/agranulocytosis is a key finding in levamisole-cocaine exposure</li>
+        <li><strong>CMP</strong> &mdash; electrolytes, creatinine, liver function</li>
+        <li><strong>ESR and CRP</strong> &mdash; nonspecific but elevation suggests active inflammation</li>
+        <li><strong>Urinalysis with microscopy</strong> + urine protein/creatinine ratio &mdash; hematuria, casts, and proteinuria suggest renal vasculitis</li>
+        <li><strong>CK</strong> &mdash; if ischemia or rhabdomyolysis is a concern</li>
+        <li><strong>ECG and troponin</strong> &mdash; if chest pain or cocaine use (evaluate for cocaine-associated ACS)</li>
+        <li><strong>Urine drug screen</strong> &mdash; supports exposure but does <strong>not</strong> detect levamisole and does not rule out exposure with a negative result</li>
+      </ul>
+
+      <h3 class="card-subtitle">Vasculitis / Autoimmune Panel</h3>
+      <ul class="content-list">
+        <li><strong>ANCA (MPO and PR3)</strong> &mdash; often positive in levamisole-cocaine; may show atypical patterns (dual positivity for both MPO and PR3)</li>
+        <li>ANA, anti-dsDNA</li>
+        <li>Complement levels (C3, C4) &mdash; low in active immune complex disease</li>
+        <li>Cryoglobulins</li>
+        <li>Hepatitis B and C serologies &mdash; secondary vasculitis mimics</li>
+        <li>HIV &mdash; immunosuppression changes the differential</li>
+        <li>Blood cultures if febrile, IVDU, or embolic concern</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="card-subtitle">Definitive Testing</h3>
+    <p><strong>Skin biopsy</strong> is the most important diagnostic test and should be obtained early if it will change management. A punch biopsy from the active edge of a lesion provides optimal histopathologic yield. Findings may include leukocytoclastic vasculitis (neutrophilic infiltrate with vessel wall destruction and red cell extravasation), thrombotic vasculopathy (intravascular thrombi without significant inflammation), or both patterns coexisting. Coordinate with dermatology and/or rheumatology for biopsy procurement and interpretation, including direct immunofluorescence.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>&#128161; Diagnostic Triad:</strong> The clinical triad of <strong>retiform purpura (especially involving the ears)</strong> + <strong>ANCA positivity</strong> + <strong>neutropenia</strong> in a cocaine user is highly suggestive of levamisole-adulterated cocaine vasculopathy. Skin biopsy confirms the pattern and excludes other causes.
+  </div>
+</div>
+
+<!-- TAB 5: MANAGEMENT -->
+<div class="tab-panel" id="tab-5" data-title="Management">
+  <div class="card">
+    <h2 class="card-title">Management</h2>
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h4>Immediate Stabilization</h4>
+        <ul class="content-list">
+          <li><strong>ABCs:</strong> Assess airway, breathing, and hemodynamic status. Stimulant-using patients may present with concurrent sympathomimetic toxicity requiring simultaneous management.</li>
+          <li><strong>Aggressive pain management:</strong> Stimulant vasculitis lesions are intensely painful. Initiate early multimodal analgesia including non-opioid and opioid agents as indicated.</li>
+          <li><strong>Wound care:</strong> Apply non-occlusive dressings for open or necrotic lesions. Avoid disrupting intact bullae, which serve as a biological dressing.</li>
+          <li><strong>Hypertensive crisis:</strong> If present, treat with labetalol or nicardipine infusion. Avoid pure beta-blockers with cocaine due to the risk of unopposed alpha-mediated vasospasm.</li>
+          <li>Establish IV access and continuous monitoring.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h4>Exclude Infection First (Critical)</h4>
+        <div class="danger-box">
+          <strong>&#9888;&#65039; DO NOT initiate steroids or immunosuppression until infection has been reasonably excluded.</strong> Immunosuppression in the setting of unrecognized endocarditis, NSTI, or sepsis is potentially lethal.
+        </div>
+        <ul class="content-list">
+          <li><strong>Endocarditis concern:</strong> Obtain blood cultures &times;2 from separate sites, order TEE, and begin empiric antibiotics per institutional protocol for IVDU-associated endocarditis if clinical suspicion exists.</li>
+          <li><strong>NSTI concern:</strong> Surgical consultation immediately. CT imaging may support but does <strong>not</strong> rule out NSTI; clinical concern mandates operative exploration.</li>
+          <li><strong>Febrile + neutropenic (levamisole):</strong> Treat as febrile neutropenia with broad-spectrum antibiotics, reverse isolation precautions, and hematology consultation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h4>Stimulant-Specific Management</h4>
+        <ul class="content-list">
+          <li><strong>Drug cessation is the single most important intervention.</strong> Recurrence with re-exposure is well-documented and predictable. Counsel the patient directly about the connection between their drug use and their illness, and connect them with addiction medicine and/or substance use disorder services.</li>
+          <li><strong>Supportive wound care:</strong> For limited cutaneous disease, engage the wound care team. Topical analgesia and plastics/burn team consultation are appropriate for extensive or deep necrosis requiring debridement.</li>
+          <li><strong>Corticosteroids:</strong> Considered for significant inflammatory vasculitis after infection has been excluded. Evidence is limited and largely case-series based; benefit is variable, and agent/dose has not been standardized. This decision should involve toxicology, rheumatology, and/or dermatology.</li>
+          <li><strong>Neutropenia/agranulocytosis:</strong> Implement infection precautions. Treat febrile neutropenia per institutional protocol. Consider G-CSF (filgrastim) in severe or prolonged cases. Consult hematology if counts do not recover.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h4>Consultations</h4>
+        <ul class="content-list">
+          <li><strong>Toxicology</strong> &mdash; primary co-management, drug-specific guidance, and cessation counseling</li>
+          <li><strong>Dermatology</strong> &mdash; biopsy procurement, lesion characterization, and histopathologic interpretation</li>
+          <li><strong>Rheumatology</strong> &mdash; immunology workup, ANCA interpretation, and steroid/immunosuppression decisions</li>
+          <li><strong>Nephrology</strong> &mdash; if hematuria, proteinuria, or rising creatinine suggests renal involvement</li>
+          <li><strong>Neurology</strong> &mdash; if CNS symptoms or focal neurologic findings are present</li>
+          <li><strong>Hematology</strong> &mdash; if significant or refractory neutropenia/agranulocytosis</li>
+          <li><strong>Plastics / Burns / Wound Team</strong> &mdash; for extensive necrosis requiring debridement or reconstruction</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 6: DISPOSITION -->
+<div class="tab-panel" id="tab-6" data-title="Disposition">
+  <div class="card">
+    <h2 class="card-title">Monitoring and Disposition</h2>
+  </div>
+
+  <div class="two-col">
+    <div class="admit-card">
+      <h4>&#128680; Admit If Any of the Following</h4>
+      <ul class="content-list">
+        <li>Systemic organ involvement &mdash; renal failure, pulmonary hemorrhage, or neurologic symptoms</li>
+        <li>Rapidly progressive skin necrosis or large areas of cutaneous involvement</li>
+        <li>Uncontrolled pain despite oral analgesia</li>
+        <li>Fever in the setting of neutropenia (levamisole-related agranulocytosis) &mdash; treat urgently as febrile neutropenia</li>
+        <li>Clinical concern for endocarditis, NSTI, or septic emboli &mdash; admit for definitive workup</li>
+        <li>Significant lab derangements: creatinine elevation, cytopenias, or coagulopathy</li>
+      </ul>
+    </div>
+    <div class="discharge-card">
+      <h4>&#9989; Outpatient Management Only If ALL of the Following</h4>
+      <ul class="content-list">
+        <li>Limited skin findings only, stable or slowly evolving</li>
+        <li>Hemodynamically stable and afebrile</li>
+        <li>Reassuring lab results &mdash; normal renal function, no significant neutropenia</li>
+        <li>Reliable follow-up confirmed with dermatology and/or rheumatology within 48&ndash;72 hours</li>
+        <li>Clear written return precautions provided and understood by the patient</li>
+        <li>Patient able to care for wounds at home with appropriate supplies</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card card-yellow" style="margin-top:24px">
+    <h3 class="card-subtitle" style="margin-top:0">Return Precautions (Provide to ALL Patients at Discharge)</h3>
+    <p>Instruct the patient to return to the emergency department immediately for any of the following:</p>
+    <ul class="content-list">
+      <li>Spreading redness, warmth, or new skin breakdown</li>
+      <li>Fever or chills</li>
+      <li>Shortness of breath or coughing up blood</li>
+      <li>Blood in urine</li>
+      <li>New weakness, numbness, difficulty speaking or walking</li>
+      <li>Worsening pain despite prescribed medications</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 class="card-subtitle">Documentation Best Practices</h3>
+    <ul class="content-list">
+      <li>Map all lesion borders at the time of initial evaluation using anatomic diagrams or clinical photography</li>
+      <li>Photograph lesions if institutional policy permits, with a ruler for scale</li>
+      <li>Document last drug use, substance type, route of administration, and any recent change in supply</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TAB 7: CASE STUDIES -->
+<div class="tab-panel" id="tab-7" data-title="Case Studies">
+  <div class="card">
+    <h2 class="card-title">Clinical Cases</h2>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">Case 1 &mdash; Classic Levamisole-Cocaine Pattern</div>
+    <div class="case-body">
+      <div class="case-section">
+        <h5>Patient</h5>
+        <p>A 44-year-old man with a history of regular cocaine use presents with 5 days of progressive painful skin lesions. He reports using cocaine from a "new batch" approximately one week prior to the onset of symptoms.</p>
+      </div>
+      <div class="case-section">
+        <h5>Presentation</h5>
+        <p>On examination, there are tender retiform purpuric lesions involving bilateral ear helices, the forehead, and bilateral lower extremities. The lesions have central pallor with a livedo-like violaceous border. The patient reports significant pain and diffuse arthralgia for the past 3 days. He is afebrile with stable vital signs. He denies IV drug use.</p>
+      </div>
+      <div class="case-section">
+        <h5>Workup</h5>
+        <ul class="content-list">
+          <li><strong>CBC:</strong> WBC 1.8 (ANC 0.6 &mdash; agranulocytosis range), Hgb 12.4, Plt 198</li>
+          <li><strong>CMP:</strong> Creatinine 1.3 (baseline unknown), all others normal</li>
+          <li><strong>UA:</strong> 2+ blood, 1+ protein</li>
+          <li><strong>ANCA:</strong> Positive (atypical pattern &mdash; both MPO and PR3 weakly positive)</li>
+          <li><strong>ANA:</strong> Negative; <strong>Complement:</strong> mildly low C3</li>
+          <li><strong>Blood cultures:</strong> No growth</li>
+          <li><strong>UDS:</strong> Positive for cocaine metabolites (levamisole not detected by standard assay)</li>
+        </ul>
+      </div>
+      <div class="case-section">
+        <h5>Skin Biopsy</h5>
+        <p>Punch biopsy from the active edge of a lower extremity lesion showed leukocytoclastic vasculitis with perivascular neutrophilic infiltrate and red cell extravasation. A thrombotic component was seen in some dermal vessels. Direct immunofluorescence demonstrated IgM and C3 deposition along vessel walls.</p>
+      </div>
+      <div class="case-section">
+        <h5>Hospital Course</h5>
+        <p>The patient was admitted for neutropenia management and wound care. Infectious workup returned negative. Rheumatology and dermatology co-managed the case. Cessation counseling was initiated with warm handoff to the substance use disorder team. Supportive care with wound care team was provided. Steroids were deferred initially given a mild inflammatory picture and concern for infection risk with agranulocytosis. Neutrophil count recovered over 7 days. Skin lesions stabilized and began to improve.</p>
+      </div>
+      <div class="case-section">
+        <h5>Outcome</h5>
+        <p>Discharged with close rheumatology and dermatology follow-up. Unfortunately, the patient had complete recurrence of lesions 3 weeks later after re-using cocaine &mdash; reinforcing the critical importance of drug cessation as the primary therapeutic intervention.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">Case 2 &mdash; Methamphetamine Vascular Injury Mimic</div>
+    <div class="case-body">
+      <div class="case-section">
+        <h5>Patient</h5>
+        <p>A 32-year-old man with heavy methamphetamine use presents via EMS after being found unresponsive by bystanders. The scene suggested prolonged down-time.</p>
+      </div>
+      <div class="case-section">
+        <h5>Presentation</h5>
+        <p>On arrival: BP 210/130 mmHg, HR 115. Bystanders reported the patient complained of severe headache before becoming unresponsive. On examination, the patient is unresponsive to voice but localizes to pain. A right-sided facial droop and right arm weakness are noted. There is mottled skin of bilateral lower extremities.</p>
+      </div>
+      <div class="case-section">
+        <h5>Workup</h5>
+        <ul class="content-list">
+          <li><strong>CT head (non-contrast):</strong> Hypertensive hemorrhage &mdash; left basal ganglia intracerebral hemorrhage (ICH) with surrounding edema and early midline shift</li>
+          <li><strong>Labs:</strong> CBC normal, Creatinine 1.1, CK 2,200 (rhabdomyolysis from prolonged down-time)</li>
+          <li><strong>UA:</strong> 3+ blood (myoglobinuria vs. hematuria)</li>
+          <li><strong>UDS:</strong> Positive for methamphetamine and amphetamine</li>
+          <li><strong>ANCA, ANA, ACLA:</strong> All negative</li>
+          <li><strong>ECG:</strong> Sinus tachycardia, no ischemic changes</li>
+        </ul>
+      </div>
+      <div class="case-section">
+        <h5>Acute Management</h5>
+        <ul class="content-list">
+          <li>Neurosurgery emergently consulted &mdash; ICH managed conservatively (no surgical indication at initial presentation)</li>
+          <li>IV labetalol infusion for BP control (target SBP 140&ndash;160 mmHg)</li>
+          <li>Aggressive IV crystalloid for rhabdomyolysis and renal protection</li>
+          <li>IV mannitol for elevated intracranial pressure management</li>
+          <li>Reversal agents and thromboelastography checked (patient had no known anticoagulation)</li>
+        </ul>
+      </div>
+      <div class="case-section">
+        <h5>Key Teaching Point</h5>
+        <div class="info-box">
+          The skin mottling in this case represented diffuse vasospasm from the sympathomimetic surge, not true inflammatory vasculitis. The primary driver of hemorrhage was severe hypertension in the context of catecholamine excess. A vasculitis workup was initiated but was unrevealing. <strong>Treat the hypertension and hemodynamic emergency first</strong> &mdash; a vasculitis workup can follow if the clinical course is atypical or if deficits persist beyond the expected recovery trajectory.
+        </div>
+      </div>
+      <div class="case-section">
+        <h5>Outcome</h5>
+        <p>Transferred to neurocritical care. Blood pressure was gradually controlled. Rhabdomyolysis resolved with fluid therapy. Persistent right hemiplegia at hospital day 10 &mdash; the patient was transferred to an acute rehabilitation facility.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 8: KEY PEARLS -->
+<div class="tab-panel" id="tab-8" data-title="Key Pearls">
+  <div class="card">
+    <h2 class="card-title">Key Pearls</h2>
+  </div>
+
+  <div class="pearl-card">
+    <div class="pearl-icon" style="background:#E8F0FE">&#128300;</div>
+    <div class="pearl-content">
+      <h4>"Vasculitis" vs. Vasculopathy &mdash; Know the Difference</h4>
+      <p>Many cases labeled as "stimulant vasculitis" are actually thrombotic vasculopathy with limited or no true inflammatory infiltrate. On biopsy, you may see thrombi without the classic leukocytoclastic pattern of neutrophilic vessel wall destruction. Both patterns can coexist in the same patient. The distinction matters for treatment &mdash; thrombotic vasculopathy does not benefit from immunosuppression the way inflammatory vasculitis might. Only a tissue biopsy can reliably make this distinction.</p>
+    </div>
+  </div>
+
+  <div class="pearl-card">
+    <div class="pearl-icon" style="background:#FFF3E0">&#128066;</div>
+    <div class="pearl-content">
+      <h4>Ears + ANCA + Neutropenia = Levamisole Until Proven Otherwise</h4>
+      <p>The triad of retiform purpura involving the ears, ANCA positivity (often with atypical dual MPO/PR3 positivity), and neutropenia in a cocaine user is pathognomonic enough to act on clinically. Levamisole is not detected on standard urine drug screens. A negative UDS does not rule out levamisole exposure. Recurrence with re-use is the rule, not the exception &mdash; making this triad a powerful diagnostic indicator.</p>
+    </div>
+  </div>
+
+  <div class="pearl-card">
+    <div class="pearl-icon" style="background:#FFF5F5">&#128683;</div>
+    <div class="pearl-content">
+      <h4>No Steroids Until Infection Is Excluded &mdash; Full Stop</h4>
+      <p>Initiating steroids in a patient with unrecognized NSTI, endocarditis with septic emboli, or sepsis is potentially lethal. The workup must include blood cultures, echocardiography in appropriate risk patients, and surgical consultation if NSTI is in the differential, before immunosuppression is considered. When in doubt about infection &mdash; call surgery first, not rheumatology.</p>
+    </div>
+  </div>
+
+  <div class="pearl-card">
+    <div class="pearl-icon" style="background:#F0FFF4">&#128138;</div>
+    <div class="pearl-content">
+      <h4>Cessation Is the Most Effective Treatment</h4>
+      <p>The most powerful intervention in stimulant vasculitis is stopping the causative drug. Recurrence is predictably associated with re-use, and no amount of wound care, steroids, or immunosuppression will prevent further vascular injury if the patient continues using. Every encounter is an opportunity for a brief motivational intervention and warm handoff to addiction medicine or substance use disorder services.</p>
+    </div>
+  </div>
+
+  <div class="pearl-card">
+    <div class="pearl-icon" style="background:#F3E8FD">&#9986;&#65039;</div>
+    <div class="pearl-content">
+      <h4>Biopsy Early If It Will Change Management</h4>
+      <p>Skin biopsy from the active edge of a lesion is the single most informative diagnostic test. Waiting until the patient is "more stable" often means the active lesion has evolved and biopsy yield decreases as inflammation resolves or necrosis replaces viable tissue. If you are considering immunosuppression, you need a tissue diagnosis first. Coordinate early with dermatology to punch biopsy a fresh, active lesion before treatment alters the histopathology.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 9: REFERENCES -->
+<div class="tab-panel" id="tab-9" data-title="References">
+  <div class="card">
+    <h2 class="card-title">References and Further Reading</h2>
+    <ol class="ref-list">
+      <li>Goldfrank's Toxicologic Emergencies &mdash; Stimulant Toxicity and Cocaine Complications (current edition)</li>
+      <li>Tintinalli's Emergency Medicine: A Comprehensive Study Guide &mdash; Cocaine and Sympathomimetic Toxicity</li>
+      <li>Merkel PA, Koroshetz WJ, et al. Cocaine-associated cerebral vasculitis. <em>Semin Arthritis Rheum.</em> 1995;25(3):172&ndash;183.</li>
+      <li>Kwon C, Zaritsky A, Dharnidharka VR. Transient proximal tubular renal injury following Ecstasy ingestion. <em>Pediatr Nephrol.</em> 2003;18(8):820&ndash;822.</li>
+      <li>Seghatol FF, Rigolin VH. Appetite suppressants and valvular heart disease. <em>Curr Opin Cardiol.</em> 2002;17(5):486&ndash;492.</li>
+      <li>Srikanth S, Barua R, Ambrose J. Methamphetamine-associated acute left ventricular dysfunction. <em>Cardiology.</em> 2008;109(3):188&ndash;192.</li>
+      <li>Syed RH, Moore TL. Methylphenidate and dextroamphetamine-induced peripheral vasculopathy. <em>J Clin Rheumatol.</em> 2008;14(1):30&ndash;33.</li>
+      <li>UpToDate: "Cocaine use disorder: Clinical manifestations, diagnosis, and management" &mdash; Cocaine cardiovascular complications</li>
+      <li>UpToDate: "Levamisole-adulterated cocaine" &mdash; Cutaneous and systemic manifestations</li>
+      <li>ACMT/AACT Toxicology Practice Resources &mdash; Stimulant complications</li>
+    </ol>
+  </div>
+
+  <div class="card" style="background:#F9F9F9;border:1px solid var(--divider)">
+    <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.5"><em>This website is intended as a clinical education reference for licensed medical professionals in a training/conference setting. It does not constitute individual medical advice. Clinical decisions should be based on current guidelines and institutional protocols.</em></p>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <p>Stimulant Vasculitis / Vasculopathy &mdash; Clinical Education Reference</p>
+  <p style="margin-top:4px">Last updated: March 2026 | For educational use at EM Toxicology Conference</p>
+</footer>
+
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8593;</button>
+
+<script>
+(function() {
+  // Tab system
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  const navLinks = document.querySelectorAll('#nav-links a, #mobile-nav a');
+
+  function activateTab(index) {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    tabPanels.forEach(p => { p.classList.remove('active'); });
+    navLinks.forEach(l => l.classList.remove('active'));
+
+    tabBtns[index].classList.add('active');
+    tabPanels[index].classList.add('active');
+
+    // Highlight nav links
+    navLinks.forEach(l => {
+      if (parseInt(l.getAttribute('data-tab')) === index) l.classList.add('active');
+    });
+
+    // Scroll tab into view
+    tabBtns[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+    // Close mobile nav
+    document.getElementById('mobile-nav').classList.remove('open');
+  }
+
+  // Expose globally
+  window.activateTab = activateTab;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => activateTab(parseInt(btn.getAttribute('data-tab'))));
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      activateTab(parseInt(link.getAttribute('data-tab')));
+      window.scrollTo({ top: document.getElementById('tab-bar').offsetTop - 56, behavior: 'smooth' });
+    });
+  });
+
+  // Hamburger menu
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobile-nav').classList.toggle('open');
+  });
+
+  // Accordion
+  window.toggleAccordion = function(header) {
+    const item = header.parentElement;
+    item.classList.toggle('open');
+  };
+
+  // Mechanism filter
+  window.filterMech = function(filter, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const sections = document.querySelectorAll('.mech-section');
+    const rows = document.querySelectorAll('#mech-table tbody tr');
+
+    sections.forEach(s => {
+      if (filter === 'all' || s.getAttribute('data-drug') === filter) {
+        s.style.display = '';
+      } else {
+        s.style.display = 'none';
+      }
+    });
+
+    rows.forEach(r => {
+      if (filter === 'all' || r.getAttribute('data-drug') === filter) {
+        r.style.display = '';
+      } else {
+        r.style.display = 'none';
+      }
+    });
+  };
+
+  // Back to top button
+  const backBtn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      backBtn.classList.add('visible');
+    } else {
+      backBtn.classList.remove('visible');
+    }
+  });
+
+  // Progress bar
+  const progressBar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  });
+
+  // Close mobile nav when clicking outside
+  document.addEventListener('click', (e) => {
+    const mobileNav = document.getElementById('mobile-nav');
+    const hamburger = document.getElementById('hamburger');
+    if (!mobileNav.contains(e.target) && !hamburger.contains(e.target)) {
+      mobileNav.classList.remove('open');
+    }
+  });
+})();
+</script>
+</body>
+</html>

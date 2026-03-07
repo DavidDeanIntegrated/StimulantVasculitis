@@ -509,6 +509,34 @@ footer {
   }
 }
 
+/* Lightbox */
+#lightbox {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.85); z-index: 20000;
+  align-items: center; justify-content: center;
+  cursor: zoom-out; padding: 24px;
+  animation: lbFadeIn 0.2s ease;
+}
+#lightbox.open { display: flex; }
+@keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+#lightbox img {
+  max-width: 95vw; max-height: 92vh;
+  border-radius: var(--md-radius-lg);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  object-fit: contain;
+}
+#lightbox-close {
+  position: absolute; top: 16px; right: 20px;
+  background: rgba(255,255,255,0.15); border: none;
+  color: #fff; font-size: 28px; width: 48px; height: 48px;
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+#lightbox-close:hover { background: rgba(255,255,255,0.3); }
+.clickable-img { cursor: zoom-in; transition: transform 0.2s, box-shadow 0.2s; }
+.clickable-img:hover { transform: scale(1.02); box-shadow: var(--md-shadow-2); }
+
 /* Print */
 @media print {
   #progress-bar, #top-nav, #tab-bar, #back-to-top, #hamburger, #mobile-nav { display: none !important; }
@@ -729,19 +757,19 @@ footer {
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
       <div style="border-radius:var(--md-radius-md);overflow:hidden;border:1px solid var(--md-outline-variant)">
         <div style="background:var(--md-primary);color:#fff;padding:10px 16px;font-weight:600;font-family:'Google Sans',sans-serif;font-size:0.9rem">Cocaine</div>
-        <img src="cocaine-mechanism.png" alt="Cocaine: Pharmacokinetics and Mechanism of Action" style="width:100%;display:block">
+        <img src="cocaine-mechanism.png" alt="Cocaine: Pharmacokinetics and Mechanism of Action" class="clickable-img" style="width:100%;display:block" onclick="openLightbox(this)">
       </div>
       <div style="border-radius:var(--md-radius-md);overflow:hidden;border:1px solid var(--md-outline-variant)">
         <div style="background:var(--md-warning);color:#fff;padding:10px 16px;font-weight:600;font-family:'Google Sans',sans-serif;font-size:0.9rem">Levamisole</div>
-        <img src="levamisole-mechanism.png" alt="Levamisole: Pharmacokinetics and Mechanism of Action" style="width:100%;display:block">
+        <img src="levamisole-mechanism.png" alt="Levamisole: Pharmacokinetics and Mechanism of Action" class="clickable-img" style="width:100%;display:block" onclick="openLightbox(this)">
       </div>
       <div style="border-radius:var(--md-radius-md);overflow:hidden;border:1px solid var(--md-outline-variant)">
         <div style="background:var(--md-tertiary);color:#fff;padding:10px 16px;font-weight:600;font-family:'Google Sans',sans-serif;font-size:0.9rem">Methamphetamine</div>
-        <img src="methamphetamine-mechanism.png" alt="Methamphetamine: Pharmacokinetics and Mechanism of Action" style="width:100%;display:block">
+        <img src="methamphetamine-mechanism.png" alt="Methamphetamine: Pharmacokinetics and Mechanism of Action" class="clickable-img" style="width:100%;display:block" onclick="openLightbox(this)">
       </div>
       <div style="border-radius:var(--md-radius-md);overflow:hidden;border:1px solid var(--md-outline-variant)">
         <div style="background:var(--md-success);color:#fff;padding:10px 16px;font-weight:600;font-family:'Google Sans',sans-serif;font-size:0.9rem">Amphetamine</div>
-        <img src="amphetamine-mechanism.png" alt="Amphetamine: Pharmacokinetics and Mechanism of Action" style="width:100%;display:block">
+        <img src="amphetamine-mechanism.png" alt="Amphetamine: Pharmacokinetics and Mechanism of Action" class="clickable-img" style="width:100%;display:block" onclick="openLightbox(this)">
       </div>
     </div>
   </div>
@@ -1323,6 +1351,11 @@ footer {
 
 <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8593;</button>
 
+<div id="lightbox" onclick="closeLightbox()">
+  <button id="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <script>
 (function() {
   const tabBtns = document.querySelectorAll(".tab-btn");
@@ -1344,6 +1377,21 @@ footer {
     tabBtns[index].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
     document.getElementById("mobile-nav").classList.remove("open");
   }
+
+  window.openLightbox = function(img) {
+    var lb = document.getElementById("lightbox");
+    document.getElementById("lightbox-img").src = img.src;
+    document.getElementById("lightbox-img").alt = img.alt;
+    lb.classList.add("open");
+    document.body.style.overflow = "hidden";
+  };
+  window.closeLightbox = function() {
+    document.getElementById("lightbox").classList.remove("open");
+    document.body.style.overflow = "";
+  };
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") closeLightbox();
+  });
 
   window.activateTab = activateTab;
 
